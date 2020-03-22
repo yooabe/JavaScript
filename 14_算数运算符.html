@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+          运算符也叫操作符
+            通过运算符可以对一个或多个值进行运算并获取结果
+            比如：typeof就是运算符，可以来获得一个值的类型
+                 它会将该值的类型以字符串的形式返回
+
+            算数运算符
+               对非Number类型的值进行运算，会将这些值转换为Number然后再运算
+                  任何值和NaN运算都是NaN
+
+                + 如果对两字符串进行加法运算则拼串
+                  任何值和字符串运算会先转换为字符串
+                - * / 运算时都会自动转换为Number
+
+                +"" 转换为String
+                -0 转换为Number
+
+                % 取模运算（取余数）
+        */
+       var a=123;
+       var result=typeof a;
+       document.write(a+"<br>"); 
+       result =a+1;
+       result ="123"+"456";//123456
+       result =true+"hello";//truehello
+       result =123+"";//123
+       result = 1+2+"3";//33
+       result = "1"+"2"+3;//123
+
+       document.write("result="+result+"<br>"); 
+
+       var d="123";
+       d = d-0;
+       document.write("d="+result+"<br>"); 
+
+       result=9%3;
+       document.write(result+"<br>"); 
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

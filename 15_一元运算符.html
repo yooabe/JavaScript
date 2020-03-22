@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+            一元运算符，只需要一个操作数
+              + 正号，不会对数字产生影响
+              - 负号，对数字进行取反
+            
+            对于非Number类型的值
+                会先转换为Number，然后在运算
+                可以对一个其他数值类型使用+来转换为Number
+        */
+       var a=true;
+       a=-a;
+       document.write(a+"<br>");
+       document.write(typeof a+"<br>");
+
+       var result=1+ +"2" +3;
+       document.write(result+"<br>");
+       document.write(typeof reslut+"<br>");
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
