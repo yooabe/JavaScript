@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 可以写到外部js文件，利于同时引用以及浏览器缓存机制 -->
+    <script src="#">
+        // 也可以写到script中，一旦引用外部文件就不能再编写代码了，即使编写也会被浏览器忽略，如有需要可以创建新的script标签用于编写内部代码
+    </script>
+</head>
+<body>
+    <!-- 可以到标签的onclick属性中，点击即执行 -->
+    <button onclick="alert('1111')">点击</button>
+
+    <!-- 可以写到超链接href属性中，点击即执行 -->
+    <a href="javascript:alert('2222')">超链</a>
+    <a href="javascript:;">超链</a>
+
+    <!-- 虽然可以写在标签属性中，但是属于结构与行为耦合，不方便维护 -->
+</body>
+</html>
