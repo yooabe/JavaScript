@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        //== 来做相等运算
+        //相等返回true，否则返回false
+        var result = 1 == 1;//true
+        result = 10 == 4;//false
+        //如果值不同，则会自动进行类型转换成相同的类型
+        result = "1" == 1;//true
+        result = "1" == true;//true
+        result = null == 0;//false
+        //undefined衍生自null，所以会返回true
+        result = undefined == null;//true
+        //NaN不和任何值相等，包括他本身
+        result = NaN == NaN;//false
+
+        //!= 不相等运算
+        //不相等返回true，否则返回false
+        result = 10 != 5;//true
+        result = 10 != 10;//false
+        result = "ab" != "ab";//false
+        result = "1" != 1;//false
+
+        //=== 全等运算
+        //不会做自动类型的转换
+        result = "123" === 123;//false
+        result = null === undefined;//false
+
+        //!== 不全等
+        result = "123" == 123;//true
+        result = null == undefined;//true
+
+        console.log(result);
+
+        //通过isNaN()函数来判断一个值是否是NaN
+        var b = NaN;
+        console.log(isNaN(b));//true
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
