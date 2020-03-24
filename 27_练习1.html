@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //练习1
+        /*
+        prompt()可以弹出一个提示框，带有可输入的文本框
+        用户可以在文本框输入内容，该函数需要一个字符串作为参考
+        该字符串将会作为提示框的提示文字
+        用户输入的内容将会作为行数的返回值返回，可以定义一个变量来接收
+        */
+        var score = prompt("请输入成绩：")
+        if (score > 100 || score < 0 || isNaN(score)){
+            alert("瞎写？？？");
+        }else{
+                if (score == 100) {
+                alert("PS4pro");
+            } else if (score >= 80) {
+                alert("PS4");
+            } else if (score >= 60) {
+                alert("NS");
+            } else {
+                alert("-8000");
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

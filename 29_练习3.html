@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var num1 = + prompt("第1个数");
+        var num2 = + prompt("第2个数");
+        var num3 = + prompt("第3个数");
+        //prompt()返回值是String类型
+        if (num1 < num2 && num1 < num3) {
+            //num1最小，比较num2和num3
+            if (num2 < num3) {
+                //num1,num2,num3
+                alert(num1 + "," + num2 + "," + num3);
+            } else {
+                alert(num1 + "," + num3 + "," + num2);
+            }
+        } else if (num2 < num1 && num2 < num3) {
+            //num2最小，比较num1和num3
+            if (num1 < num3) {
+                //num2,num1,num3
+                alert(num2 + "," + num1 + "," + num3);
+            } else {
+                alert(num2 + "," + num3 + "," + num1);
+            }
+        } else if (num3 < num1 && num3 < num2) {
+            //num3最小，比较num1和num1
+            if (num1 < num2) {
+                //num3,num1,num2
+                alert(num3 + "," + num1 + "," + num1);
+            } else {
+                alert(num3 + "," + num2 + "," + num1);
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

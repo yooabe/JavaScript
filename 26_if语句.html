@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+        通过流程控制语句可以控制程序执行流程
+        使程序可以根据一定的条件来选择执行
+
+        语句的分类：
+        1.条件判断语句
+        2.条件分支语句
+        3.循环语句
+        */
+
+        /*
+        条件判断语句：
+           - 使用条件判断语句可以在执行某个语句之前进行判断，条件成立才会执行
+           - if语句
+        */
+
+        var a = 21;
+        if (a > 10 && a <= 20) {
+            console.log("a比10大小于等于20");
+            console.log("谁也管不着我")
+        }
+
+        /*
+        语法1： 
+        if(条件表达式){
+            语句...
+            }
+
+        - if语句在执行的时候会先对条件表达式进行求值判断，
+        - 如果条件表达式为true，则执行if后的语句
+        - 如果条件表达式为false，则不会执行if后的语句
+        - if语句只能控制紧随其后的那个语句
+        - 如果希望多线控制，则需要代码块
+        - if语句后的代码块不是必须的，但是尽量写上
+
+        语法2：
+        if(条件表达式){
+            语句...
+            }else{
+                语句...
+            }
+        
+        if...else...语句
+        - 当该语句执行时，会先对if后的条件表达式进行求值判断
+        - 如果该值为true，则执行if后的语句
+        - 如果该值为false，则执行else后的语句
+
+        语法3：
+        if(条件表达式){
+            语句...
+            }else if{
+                语句...
+            }else if{
+                语句...
+            }else{
+                语句...
+            }
+
+        if...else if...else
+        - 当该语句执行时，会会从上到下一次对条件表达式进行求值判断
+        - 如果值为true，则执行当前语句
+        - 如果值为false，则继续向下判断
+        - 如果都不满足则执行最后一个else后的语句
+        - 该语句中，只会有一个代码块执行，一旦执行就结束
+        */
+        var age=50;
+        if(age>100){
+            console.log("活着挺累的")
+        }else if(age>80){
+            console.log("你也老大不小的")
+        }else if(age>60){
+            console.log("你已经退休了")
+        }else{
+            console.log("还年轻")
+        }
+        // 单个=是赋值 if(10)相当于if(true)！！！！！！！！！！
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
