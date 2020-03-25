@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 
+        向页面输出连续的数字
+        循环语句：
+            while循环：
+                语法：
+                    while(条件表达式){
+                        语句...
+                    }
+            while语句在执行时，
+                先对条件表达式进行求值判断，如果为true则继续执行循环体，以此类推
+                表达式写死为true的循环叫做死循环，不会停止触发浏览器关闭
+            
+            do...while循环：
+                语法：
+                    do{
+                        语句...
+                    }while(条件表达式)
+            do...while语句上来会先执行循环体，执行完毕后再对while表达式进行判断
+
+            do...while可以保证循环体至少执行一次
+         */
+
+         /* var n =1;
+         while(true){
+             alert(n++);
+             if(n==10){
+                 break;
+             }
+         } */
+
+         //创建一个循环，往往需要三个步骤
+
+         //1.创建一个初始化的变量
+         var i =0;
+         //2.在循环中设置一个条件表达式
+         while(i<10){
+             alert(i);
+             //3.定义一个更新表达式，每次更新初始化变量
+             i++;
+         }
+         
+         do{
+             document.write(i++ + "<br>");
+         }while(i <= 50);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

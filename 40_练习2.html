@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //打印1-100之间所有质数
+        for(var i =2;i<=100;i++){
+            //创建布尔值，默认i是质数
+            var flag=true;
+            //判断i是否是质数
+            for(var j=2;j<i;j++){
+                if(i%j==0){
+                    //进入判断证明i不是质数
+                    flag=false;
+                }
+            }
+            if(flag){
+                console.log(i);
+            }
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

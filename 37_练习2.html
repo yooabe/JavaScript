@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //判断值是否为质数
+
+        var num =prompt("请输入一个大于1的整数");
+        //判断值是否合法
+        if(num <=1){
+            alert("该值不合法");
+        }else{
+            //默认当前num是质数
+            var flag =true;
+            //判断num是否是质数
+            //获取1-num之间的数
+            for(var i=2;i<num;i++){
+                //判断num是否能被i整除
+                if(num%i==0){
+                    //如果num能被i整除，则说明num一定不是质数
+                    //设置flag为false
+                    flag=false;
+                }
+
+            }
+            if(flag){
+                alert(num+"是质数");
+            }else{
+                alert("不是质数");
+            }
+
+        }
+        //反向思维
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
