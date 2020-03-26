@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //测试程序的性能
+        //console.time("名字")可以用来开启一个计时器
+        //它需要一个字符串作为参数，这个字符串将作为计时器的标识
+        console.time("test");
+
+        //打印1-100之间所有质数
+        for(var i =2;i<=100;i++){
+            var flag=true;
+            for(var j=2;j<=MAth.sqrt(i);j++){
+                if(i%j==0){
+                    //一旦进入判断证明i不可能是质数，此时循环再执行没意义
+                    flag=false;
+                    break;
+                }
+            }
+            if(flag){
+                console.log(i);
+            }
+        }
+        //终止计时器
+        //console.timeEnd()用来停止一个计时器
+        console.timeEnd("test")
+
+        //可以通过Math.sqrt()对一个数进行开方
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
