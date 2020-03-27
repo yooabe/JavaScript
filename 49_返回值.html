@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 
+        可以使用return来设置函数的返回值
+        语法：
+            return 值
+        return后的值将会作为函数的执行结果返回
+            可以定义一个变量来接收结果
+        return后的都不会执行
+        如果return后不跟任何值相当于返回一个undefined
+        不写return也会返回一个undefined
+         */
+        function sum(a,b,c){
+            // alert(a+b+c);
+            var d =a +b +c;
+            return d;
+        }
+        //调用函数
+        //变量result的值就是函数的执行结果
+        //函数返回什么result的值就是什么
+        var result = sum(4,5,6);
+        console.log(result);
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

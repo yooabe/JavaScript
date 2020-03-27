@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var obj = {
+            name: "11",
+            age: "222",
+            gender: "33"
+        }
+        /* 
+        for..in
+        语法：
+            for(var 变量in 对象){
+
+            }
+        
+        对象有几个属性，循环体就执行几次
+        每次执行，会将对象中的一个属性名赋值给变量
+         */
+        for (var n in obj) {
+            console.log(n)
+            console.log(obj[n])
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

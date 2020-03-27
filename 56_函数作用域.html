@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 
+        函数作用域
+            - 调用函数时创建函数作用域，函数执行完毕以后，函数作用域销毁
+            - 每调用一次函数就会创建一个新的函数作用域，他们是相互独立的
+            - 函数作用域操作变量时会先在自身作用域寻找
+            - 要访问全局变量使用window
+         */
+        var a =10
+        function fun(){
+            var a =20;
+            // console.log(a);
+            function fun2(){
+                console.log(window.a);
+            }
+            fun2();
+        }
+        fun();
+        // console.log(a);
+
+        /* 
+        在函数作用域也有声明提前特性
+        函数声明也会在所有代码执行前执行
+         */
+        function fun3(){
+            console.log(a);
+            var a =35;
+            fun4()
+            function fun4(){
+                // alert("可以");
+            }
+        }
+        fun3();
+
+        //在函数中，不使用var声明的变量都会成为全局变量
+        var c =33;
+        function fun5(){
+            console.log(c)
+            // var c=10;
+            c =10;
+        }
+        fun5();
+        console.log(c);
+
+        //定义形参就相当于在函数作用域中声明了变量
+        var e=23;
+        function fun6(e){
+            //相当于var e;
+            console.log(e);
+        }
+        fun6();//undefined
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

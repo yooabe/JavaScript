@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 
+        定义一个函数，判断一个数字是否是偶数
+         */
+
+        function isOu(num) {
+            return num % 2 == 0;
+        }
+        var result =isOu(15);
+        console.log(result)
+
+        /* 
+        定义一个函数，可以根据半径计算一个圆的面积并返回计算结果
+         */
+        function mianji(r){
+            return 3.14*r*r;
+        }
+        result=mianji(10);
+        console.log(result);
+
+        /* 
+        实参可以是任意数据，可以是一个对象
+        当我们参数过多时，可以将参数封装到一个对象中，然后通过对象传递
+         */
+        function say(o){
+            console.log("我是"+o.name+",今年我"+o.age+"岁");
+        }
+        var obj={
+            name:"111",
+            age:"222"
+        }
+        say(obj);
+
+        /* 
+        实参也可以是函数
+         */
+        function fun(a){
+            console.log(a)
+        }
+        fun(function(){alert("hello")});
+
+        /* 
+        a()
+            - 调用函数
+            - 相当于使用的函数的返回值
+        a
+            - 函数对象
+            - 相当于直接使用函数对象
+         */
+         
+        //返回值可以是任意数据类型
+        function fun1(){
+            function fun2(){
+                alert("333");
+            }
+            return fun2;
+        }
+        a = fun1();
+        console.log(a);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
