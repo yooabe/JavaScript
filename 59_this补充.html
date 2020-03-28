@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var name ="全局变量";
+
+        function fun(){
+            console.log(this.name);
+        }
+
+        var obj= {
+            name:"111",
+            sayName:fun
+        }
+        var obj2= {
+            name:"222",
+            sayName:fun
+        }
+        //我们希望调用obj.sayName()时可以输出obj的名字
+        obj2.sayName();
+    </script>
+</head>
+<body>
+
+</body>
+</html>
