@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function MyClass(){
+
+        }
+
+        MyClass.prototype.name="原型中的name";
+        var mc = new MyClass();
+        console.log(mc.name)
+        //使用in检查对象中是否有某属性，原型中有也会返回true
+        console.log("name" in mc)
+
+        //使用hasOwnProperty()来检查对象自身中是否含有该属性
+        console.log(mc.hasOwnProperty("name"));//false
+
+        console.log(mc.__proto__.__proto__.hasOwnProperty("hasOwnProperty"));
+        //原型对象也是对象，所有它也有原型
+        //直到找的Object对象的原型，Object对象的原型没有原型
+
+        console.log(mc.__proto__.__proto__.__proto__);//null
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

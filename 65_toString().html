@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function Person(name,age,gender){
+            this.name=name;
+            this.age=age;
+            this.gender=gender;
+        }
+
+        //通过修改原型中toString()方法来输出属性
+        Person.prototype.toString=function(){
+            return "Person[name="+this.name+",age="+this.age+",gender="+this.gender+"]"
+        }
+        var per = new Person("孙悟空",17,"男");
+
+        //当我们直接打印一个对象时，实际上输出的对象的toString()方法的返回值
+        var result = per.toString();
+        console.log(per);
+
+        /* 
+        chrome 下可以直接输出属性值
+         */
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

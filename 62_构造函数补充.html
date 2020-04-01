@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function Person(name,age){
+            this.name=name;
+            this.age=age;
+            this.sayName=fun;
+        }
+        function fun(){
+            alert("hello,我是"+this.name);
+        };
+
+        var per = new Person("test",11);
+        var per2 = new Person("test1",222);
+
+        console.log(per.sayName == per2.sayName);//true
+        /* 
+        将fun提取出来避免创建同样的方法,共享同一个方法
+         */
+
+        /* 
+        引出一个新问题
+        将函数定义在全局作用域，污染了全局作用于的命名空间，也不安全
+         */
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
