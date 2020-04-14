@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 
+        在调用函数时，浏览器每次都会传递两个隐含参数
+            1.函数的上下文对象this
+            2.封装实参的对象arguments
+                - arguments是一个类数组对象，它可以通过索引来操作数据，也可以获取长度
+                - 在调用函数时，我们所传递的实参都会在arguments中保存
+                - 即使不定义形参也可以通过arguments来使用实参
+                - callee对应当前正在指向的函数的对象
+         */
+        function fun(){
+            console.log(arguments.length);
+            console.log(arguments[1]);
+            console.log(arguments.callee);
+        }
+        fun('aaa',44);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
