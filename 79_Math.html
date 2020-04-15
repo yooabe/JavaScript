@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 
+        Math
+            - Math和其他对象不同，不是一个构造函数
+                它属于一个工具类不用创建对象，里面封装了数学运算相关的属性和方法
+            - 比如Math.PI表示圆周率
+         */
+        console.log(Math.PI);
+
+        //Math.ceil() 向上取整
+        console.log(Math.ceil(1.02));
+        //Math.floor() 向下取整
+        console.log(Math.floor(1.99));
+        //Math.round() 四舍五入
+        console.log(Math.round(1.45));
+        //Math.random() 生成0-1之间随机数
+        console.log(Math.random());
+        /* 
+        生成x-y之间的随机数
+            Math.round(Math.random()*(y-x)+x)
+         */
+        for(var i=0;i<5;i++){
+            console.log(Math.round(Math.random()*5+1))
+        }
+
+        //Max()可以获取多数的最大值
+        var max =Math.max(10,40,20);
+        console.log('max-'+max);
+        //Max()可以获取多数的最大值
+        var min =Math.min(10,40,20);
+        console.log('min-'+min);
+
+        //Math.pow(x,y) 返回x的y次幂
+        var pow=Math.pow(2,3);
+        console.log(pow);
+
+        //Math.sqrt() 对于一个数进行开方
+        var sqrt=Math.sqrt(4);
+        console.log(sqrt);
+        
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
