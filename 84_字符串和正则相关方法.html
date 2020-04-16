@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //split 拆分
+        var str ='1a2b3c4d5e6f7';
+        //使用正则表达式作为参数去拆分字符串，这个方法即使不指定全局匹配也会全部拆分
+        var result =str.split(/[A-z]/);
+        console.log(result);
+
+        /* 
+        search
+            搜索是否含有
+            搜索到指定内容则返回第一次出现的所有，没有则为-1
+            可以接受一个正则表达式作为参数
+            只会查找第一个，全局匹配没用
+         */
+        str = 'hello bbe hello aec afc';
+        result = str.search(/a[bef]c/);
+        console.log(result);
+
+        /* 
+        match
+            从一个字符串将符合条件的内容提取出来
+            默认找到一个符合要求就停止检索，可以使用全局匹配g
+            可以设置多个匹配模式
+            会将匹配到的内容封装到一个数组中返回
+        */
+        var str ='1a2a3c4d5e6f7A8B9';
+        result = str.match(/[a-z]/ig);
+        console.log(result[2]);
+
+        /* 
+        replace
+            替换，默认替换第一个
+            可以接受一个正则表达式
+        */
+        result=str.replace(/[a-z]/gi,'');
+        console.log(result);
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
