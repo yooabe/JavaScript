@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload=function(){
+            //查找bj
+            var btn01=document.getElementById('btn01');
+            btn01.onclick=function(){
+                var bj=document.getElementById('bj');
+                alert(bj.innerHTML);
+            }
+
+            //查找所有li节点
+            var btn02=document.getElementById('btn02');
+            btn02.onclick=function(){
+                var lis=document.getElementsByTagName('li');
+                //返回一个类数组对象，会封装到对象中
+                for(var i=0;i<lis.length;i++){
+                    alert(lis[i].innerHTML);
+                }
+            }
+
+            //查找name=gender的所有节点
+            var btn03=document.getElementById('btn03');
+            btn03.onclick=function(){
+                var inputs=document.getElementsByName('gender');
+                for(var i=0;i<inputs.length;i++){
+                    alert(inputs[i].value);
+                    //如果需要读取元素节点属性，直接使用 元素.属性名
+                    //读取class属性需要使用 元素.className
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <button id="btn01">01</button>
+    <button id="btn02">02</button>
+    <button id="btn03">03</button>
+    <li id="bj">北京</li>
+    <li>广州</li>
+    <input class="a" type="radio" name="gender" value="male">male
+    <input class="a" type="radio" name="gender" value="female">female
+</body>
+</html>

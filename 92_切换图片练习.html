@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #outer{
+            width: 400px;
+            text-align: center;
+            background: rgb(190, 190, 190);
+            padding: 5px;
+            font-size: 13px;
+        }
+        img{
+            width: 400px;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            //获取按钮
+            var prev=document.getElementById('prev');
+            var next=document.getElementById('next');
+
+            //获取img标签
+            var img=document.getElementsByTagName('img')[0];
+
+            //创建数组，保存图片路径
+            var imgArr=['./file/1.jpg','./file/2.jpg','./file/3.jpg'];
+
+            var index=0;
+
+            //设置提示文字
+            var info = document.getElementById('info');
+            info.innerHTML='总共'+imgArr.length+'张图片,当前第'+(index+1)+'张';
+
+
+            //绑定单击相应函数
+            prev.onclick = function(){
+                index--;
+                //判断index
+                if(index<0){
+                    index=imgArr.length -1;
+                }
+                img.src=imgArr[index];
+                info.innerHTML='总共'+imgArr.length+'张图片,当前第'+(index+1)+'张';
+            };
+            next.onclick = function(){
+                index++;
+                //判断index
+                if(index>imgArr.length -1){
+                    index=0;
+                }
+                img.src=imgArr[index];
+                info.innerHTML='总共'+imgArr.length+'张图片,当前第'+(index+1)+'张';
+            };
+        }
+    </script>
+</head>
+<body>
+    <div id="outer">
+        <p id="info"></p>
+        <img src="./file/1.jpg" alt="">
+        <button id="prev">prev</button>
+        <button id="next">next</button>
+    </div>
+</body>
+</html>
