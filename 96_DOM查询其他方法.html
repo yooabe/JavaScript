@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload=function(){
+
+            //获取body标签
+            var body=document.body;
+            //html根标签
+            var html=document.documentElement;
+            //all
+            var all=document.all;
+            //class(不支持ie8即以下)
+            var box1=document.getElementsByClassName('box1');
+            //querySelector(支持ie8，不过只会返回第一个值)
+            var div=document.querySelector('.box1 div');
+            //会将符合数组的元素封装到一个数组中返回
+            var div1=document.querySelectorAll('.box1');
+            console.log(div1);
+        }
+    </script>
+</head>
+<body>
+    <div class="box1">
+        <div>111</div>
+    </div>
+    <div class="box1"></div>
+    <div class="box1"></div>
+</body>
+</html>

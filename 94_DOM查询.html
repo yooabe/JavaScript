@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        /* 
+        定义一个函数，专门用来为指定元素绑定单击响应函数
+        参数：
+            idStr要绑定单击相应函数的对象的id属性值
+            fun事件的回调函数
+         */
+        function myClick(idStr,fun){
+            var btn = document.getElementById(idStr);
+            btn.onclick = fun;
+        }
+        
+        window.onload = function () {
+            //查找bj
+            var btn01 = document.getElementById('btn01');
+            btn01.onclick = function () {
+                var bj = document.getElementById('bj');
+                alert(bj.innerHTML);
+            }
+
+            //查找所有li节点
+            var btn02 = document.getElementById('btn02');
+            btn02.onclick = function () {
+                var lis = document.getElementsByTagName('li');
+                //返回一个类数组对象，会封装到对象中
+                for (var i = 0; i < lis.length; i++) {
+                    alert(lis[i].innerHTML);
+                }
+            }
+
+            //查找name=gender的所有节点
+            var btn03 = document.getElementById('btn03');
+            btn03.onclick = function () {
+                var inputs = document.getElementsByName('gender');
+                for (var i = 0; i < inputs.length; i++) {
+                    alert(inputs[i].value);
+                    //如果需要读取元素节点属性，直接使用 元素.属性名
+                    //读取class属性需要使用 元素.className
+                }
+            }
+
+            //city下的所有li节点
+            var btn04 = document.getElementById('btn04');
+            btn04.onclick = function () {
+                var city = document.getElementById("city");
+                var lis2 = city.getElementsByTagName('li');
+                for (var i = 0; i < lis2.length; i++) {
+                    alert(lis2[i].innerHTML);
+                }
+            }
+
+            //city下的所有li子节点
+            var btn05 = document.getElementById('btn05');
+            btn05.onclick = function () {
+                var city = document.getElementById("city");
+                //childNodes属性会获取包括文本节点在内的所有节点
+                //DOM标签之间空白也会当成文本节点
+                // var cns=city.childNodes;
+                // for (var i = 0; i < cns.length; i++) {
+                //     alert(cns[i].innerHTML);
+                // }
+
+                //children属性可以获取当前元素的所有子元素
+                var cns = city.children;
+                for (var i = 0; i < cns.length; i++) {
+                    alert(cns[i].innerHTML);
+                }
+            }
+
+            //city下的第一个节点
+            var btn06 = document.getElementById('btn06');
+            btn06.onclick = function () {
+                var city = document.getElementById("city");
+                //firstchild可以获取当前元素的第一个节点包括空白文本
+                var fir=city.firstChild;
+                //firstchild可以获取当前元素的第一个节点（不支持IE8即以下浏览器
+                fir=city.firstElementChild;
+                alert(fir.innerHTML);
+            }
+
+            //bj的父节点
+            myClick('btn07',function(){
+                var bj = document.getElementById('bj');
+                var pn=bj.parentNode;
+                alert(pn.innerHTML);
+                //innerText获取元素内部文本，跟HTML不同的时会减标签去除
+            });
+
+            //sz的前一个节点
+            myClick('btn08',function(){
+                var sz = document.getElementById('sz');
+                // var ps=sz.previousSibling;
+                //会获取空白文本
+                var ps=sz.previousElementSibling;
+                //elementsibling会获取前一个节点，ie8即以下不支持
+                alert(ps.innerHTML);
+                
+            });
+
+            //获取um的value值
+            myClick('btn09',function(){
+                var um = document.getElementById('username');
+                alert(um.value);
+            });
+
+            //设置um的value值
+            myClick('btn10',function(){
+                var um = document.getElementById('username');
+                um.value="刷新了";
+                alert(um.value);
+            });
+
+            //获取bj的文本
+            myClick('btn11',function(){
+                var bj = document.getElementById('bj');
+                alert(bj.innerText);
+                // alert(bj.firstChild.nodeValue);
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <button id="btn01">01</button>
+    <button id="btn02">02</button>
+    <button id="btn03">03</button>
+    <button id="btn04">04</button>
+    <button id="btn05">05</button>
+    <button id="btn06">06</button>
+    <button id="btn07">07</button>
+    <button id="btn08">08</button>
+    <button id="btn09">09</button>
+    <button id="btn10">10</button>
+    <button id="btn11">11</button>
+    <ul id="city">
+        <li id="bj">北京</li>
+        <li>广州</li>
+        <li id="sz">深圳</li>
+    </ul>
+    <input class="a" type="radio" name="gender" value="male">male
+    <input class="a" type="radio" name="gender" value="female">female
+    <input type="text" name="" id="username" value="111">
+</body>
+
+</html>
