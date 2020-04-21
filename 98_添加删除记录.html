@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            //获取所有超链接
+            var allA = document.getElementsByTagName('a');
+            for (var i = 0; i < allA.length; i++) {
+                allA[i].onclick = function () {
+                    //删除超链所在行
+                    var tr=this.parentNode.parentNode;
+                    //获取名字
+                    var name=tr.children[0].innerHTML;
+                    //确认
+                    //confirm确定为ture，取消为false
+                    var flag=confirm(name+':???')
+                    if(flag){
+                        tr.parentNode.removeChild(tr);
+                    }
+
+
+                    //通过return false取消默认跳转
+                    return false;
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <table id="employeeTable" border="1">
+        <tr>
+            <td>Name</td>
+            <td>Email</td>
+            <td>Salary</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Tom</td>
+            <td>Tom@tom.com</td>
+            <td>5000</td>
+            <td><a href="deleteEmp?id==001">Delete</a></td>
+        </tr>
+        <tr>
+            <td>Jerry</td>
+            <td>jerry@sohu.com</td>
+            <td>8000</td>
+            <td><a href="deleteEmp?id==002">Delete</a></td>
+        </tr>
+        <tr>
+            <td>Bob</td>
+            <td>bob@sohu.com</td>
+            <td>10000</td>
+            <td><a href="deleteEmp?id==003">Delete</a></td>
+        </tr>
+        <table border="">
+            <tr>
+                <td class="word">Name</td>
+                <td class="inp">
+                    <input type="text" name="empName" id="empName">
+                </td>
+            </tr>
+            <tr>
+                <td class="word">Email</td>
+                <td class="inp">
+                    <input type="text" name="empEmail" id="empEmail">
+                </td>
+            </tr>
+            <tr>
+                <td class="word">Salary</td>
+                <td class="inp">
+                    <input type="text" name="Salary" id="Salary">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"></td>
+                <td>
+                    <button id="addEmpButton" value="abe">
+                        Sumit
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </table>
+</body>
+
+</html>

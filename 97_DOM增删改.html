@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload=function(){
+            function myClick(idStr,fun){
+                var btn=document.getElementById(idStr);
+                btn.onclick=fun;
+            }
+            //创建一个广州节点添加到#city下
+            myClick('btn01',function(){
+                var li =document.createElement('li');
+                var gz=document.createTextNode('广州');
+                li.appendChild(gz);
+                var city=document.getElementById('city');
+                city.appendChild(li);
+            });
+            //将广州插入到bj前面
+            myClick('btn02',function(){
+                var li=document.createElement('li');
+                var gz=document.createTextNode('广州');
+                li.appendChild(gz);
+                var bj=document.getElementById('bj');
+                var city=document.getElementById('city');
+                city.insertBefore(li,bj);
+            })
+            //将广州替换北京
+            myClick('btn03',function(){
+                var li=document.createElement('li');
+                var gz=document.createTextNode('广州');
+                li.appendChild(gz);
+                var bj=document.getElementById('bj');
+                var city=document.getElementById('city');
+                city.replaceChild(li,bj);
+            })
+            //删除bj
+            myClick('btn04',function(){
+                var bj=document.getElementById('bj');
+                // var city=document.getElementById('city');
+                // city.removeChild(bj);
+                //子节点.parentNode.removeChild(子节点)
+                bj.parentNode.removeChild(bj);
+            })
+            //读取city内的html
+            myClick('btn05',function(){
+                var city=document.getElementById('city');
+                alert(city.innerHTML);
+            })
+            //设置bj内的html
+            myClick('btn06',function(){
+                var bj=document.getElementById('bj');
+                bj.innerHTML='11';
+
+            })
+            //在city中添加(综合使用innerHTML)
+            myClick('btn07',function(){
+                var city=document.getElementById('city');
+                var li=document.createElement('li');
+                li.innerHTML='222';
+                city.appendChild(li);
+            })
+        }
+    </script>
+</head>
+<body>
+    <button id="btn01">01</button>
+    <button id="btn02">02</button>
+    <button id="btn03">03</button>
+    <button id="btn04">04</button>
+    <button id="btn05">05</button>
+    <button id="btn06">06</button>
+    <button id="btn07">07</button>
+    <ul id="city">
+        <li id="bj">北京</li>
+        <li>深圳</li>
+        <li>杭州</li>
+        <li>上海</li>
+    </ul>
+</body>
+</html>
