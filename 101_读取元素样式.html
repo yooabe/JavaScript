@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1{
+            width: 200px;
+            height: 200px;
+            background-color: royalblue;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var box1=document.getElementById('box1');
+            var btn01=document.getElementById('btn01');
+            btn01.onclick=function(){
+                //currenStyle仅IE8支持
+                // alert(box1.currentStyle.width);
+
+                //1为获取样式的元素，2为伪元素一般为null
+                //如果样式没有设置，则获取真实的值
+                //不支持IE8
+                var obj =getComputedStyle(box1,null);
+                alert(obj.backgroundColor);
+                // alert(getComputedStyle(box1,null).backgroundColor);
+
+                //以上两种方式读取到的样式都是只读的
+            };
+        };
+
+        //两种兼容
+        function getStyle(obj,name){
+            /* 
+            正常浏览器
+            getComputedStyle(obj,null)[name];
+            IE8
+            obj.currentStyle[name]; 
+            */
+
+            //window.get..表示的是变量的属性值，返回undefined；不加window是变量，找不到则报错
+            if(window.getComputedStyle){
+                return getComputedStyle(obj,null)[name];
+            }else{
+                return obj.currentStyle[name]; 
+            }
+            //window.getComputedStyle?getComputedStyle(obj,null)[name]:obj.currentStyle[name]
+        }
+    </script>
+</head>
+<body>
+    <button id="btn01">???</button>
+    <div id="box1"></div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1{
+            width: 200px;
+            height: 200px;
+            background-color: royalblue !important;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var box1=document.getElementById('box1');
+            var btn01=document.getElementById('btn01');
+            btn01.onclick=function(){
+                //通过修改内联样式(优先级)，important无法被覆盖
+                box1.style.width='100px';
+                box1.style.height='100px';
+                //css含有-,将-号后的字母大写(驼峰命名)
+                box1.style.backgroundColor='yellow';
+            };
+
+            //读取样式(内联样式)
+            var btn02=document.getElementById('btn02');
+            btn02.onclick=function(){
+                alert(box1.style.width)
+            };
+        }
+    </script>
+</head>
+<body>
+    <button id="btn01">???</button>
+    <button id="btn02">???</button>
+    <div id="box1"></div>
+</body>
+</html>

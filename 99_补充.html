@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            border-collapse: collapse;
+        }
+    </style>
+    <script>
+        //删除tr的相应函数
+        function delA(){
+            var tr = this.parentNode.parentNode;
+                    //获取名字
+                    var name = tr.children[0].innerHTML;
+                    //确认
+                    //confirm确定为ture，取消为false
+                    var flag = confirm(name + ':???')
+                    if (flag) {
+                        tr.parentNode.removeChild(tr);
+                    }
+
+
+                    //通过return false取消默认跳转
+                    return false;
+        }
+        window.onload = function () {
+            //获取所有超链接
+            var allA = document.getElementsByTagName('a');
+            for (var i = 0; i < allA.length; i++) {
+                allA[i].onclick = delA;
+            }
+            //添加
+            var addEmpButton = document.getElementById('addEmpButton');
+            addEmpButton.onclick = function () {
+                var name = document.getElementById('empName').value;
+                var email = document.getElementById('empEmail').value;
+                var salary = document.getElementById('empSalary').value;
+
+                var tr=document.createElement('tr');
+                tr.innerHTML='<td>'+name+'</td>'+
+                            '<td>'+email+'</td>'+
+                            '<td>'+salary+'</td>'+
+                            '<td><a href="#">Delete</a></td>'
+
+                var a= tr.getElementsByTagName('a')[0];
+                a.onclick=delA;
+
+                var employeeTable =document.getElementById('employeeTable');
+                var tbody =employeeTable.getElementsByTagName('tbody')[0];
+                tbody.appendChild(tr);
+                // alert(name+email+salary);
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+    <table id="employeeTable" border="1">
+        <tr>
+            <td>Name</td>
+            <td>Email</td>
+            <td>Salary</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Tom</td>
+            <td>Tom@tom.com</td>
+            <td>5000</td>
+            <td><a href="deleteEmp?id==001">Delete</a></td>
+        </tr>
+        <tr>
+            <td>Jerry</td>
+            <td>jerry@sohu.com</td>
+            <td>8000</td>
+            <td><a href="deleteEmp?id==002">Delete</a></td>
+        </tr>
+        <tr>
+            <td>Bob</td>
+            <td>bob@sohu.com</td>
+            <td>10000</td>
+            <td><a href="deleteEmp?id==003">Delete</a></td>
+        </tr>
+    </table>
+    <br>
+    <br>
+    <table>
+        <tr>
+            <td class="word">Name</td>
+            <td class="inp">
+                <input type="text" name="empName" id="empName">
+            </td>
+        </tr>
+        <tr>
+            <td class="word">Email</td>
+            <td class="inp">
+                <input type="text" name="empEmail" id="empEmail">
+            </td>
+        </tr>
+        <tr>
+            <td class="word">Salary</td>
+            <td class="inp">
+                <input type="text" name="Salary" id="empSalary">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center"></td>
+            <td>
+                <button id="addEmpButton">
+                    Sumit
+                </button>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>
