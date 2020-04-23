@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1{
+            width: 100px;
+            height: 100px;
+            background-color: teal;
+        }
+        #s1{
+            background-color: royalblue;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            /* 
+            事件冒泡（Bubble
+                - 事件向上传导，当后代元素事件触发时，祖先相同事件也会被触发
+                - 开发中大部分冒泡是有益的
+                - 通过事件对象来取消冒泡
+             */
+            var s1=document.getElementById('s1');
+            var box1=document.getElementById('box1');
+            s1.onclick=function(event){
+                event=event||window.event;
+                alert('s1');
+                //cancleBubble
+                event.cancelBubble=true;
+            }
+            box1.onclick=function(){
+                alert('box1');
+            }
+            document.body.onclick=function(){
+                alert('body');
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="box1">
+        box1
+        <span id="s1">span</span>
+    </div>
+</body>
+</html>

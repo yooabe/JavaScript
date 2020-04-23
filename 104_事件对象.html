@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #areaDiv{
+            width: 300px;
+            height: 50px;
+            margin-bottom: 10px;
+            border: 1px solid black;
+        }
+        #showMsg{
+            width: 300px;
+            height: 20px;
+            border: 1px solid black;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var areaDiv=document.getElementById('areaDiv');
+            var showMsg=document.getElementById('showMsg');
+            //onmousemove
+            areaDiv.onmousemove=function(event){
+                /* 
+                事件对象
+                    - 当事件的响应函数被触发时，浏览器每次都会将一个事件对象作为实参传递进响应函数
+                    - IE8及以下以window对象的属性保存
+                 */
+                if(!event){
+                    event=window.event;
+                }
+                //event =event||window.event
+                
+                var x= event.clientX;
+                var y= event.clientY;
+                showMsg.innerHTML='x='+x+',y='+y;
+            }
+                
+        }
+    </script>
+</head>
+<body>
+    <div id="areaDiv"></div>
+    <div id="showMsg"></div>
+</body>
+</html>

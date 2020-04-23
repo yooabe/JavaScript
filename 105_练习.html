@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1{
+            width: 100px;
+            height: 100px;
+            background-color: teal;
+
+            position: absolute;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var box1=document.getElementById('box1');
+            document.onmousemove=function(event){
+                event=event||window.event;
+                //client 相对于可见窗口，而div偏移量相对于整个页面，所以采用page（不支持ie8
+                //滚动条是谁的属性：chrome-body，火狐与其他-html
+                var st=document.body.scrollTop||document.documentElement.scrollTop;
+                var sl=document.body.scrollLeft||document.documentElement.scrollLeft;
+                var left=event.clientX;
+                var top=event.clientY;
+
+                box1.style.left=left+st+'px';
+                box1.style.top=top+sl+'px';
+                
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="box1"></div>
+</body>
+</html>
