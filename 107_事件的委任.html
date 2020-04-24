@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload=function(){
+            var btn01=document.getElementById('btn01');
+            var ul=document.getElementById('u1');
+            btn01.onclick=function(){
+                var li=document.createElement('li');
+                li.innerHTML='<a href="#" class="link">---</a>';
+                u1.appendChild(li);
+            }
+
+            //这里我们为每一个超链都绑定一个单机响应函数，比较麻烦只能为已有的超链设置
+            /* var allA=document.getElementsByTagName('a');
+            for(var i=0;i<allA.length;i++){
+                allA[i].onclick=function(){
+                    alert('??');
+                }
+            } */
+
+            /* 
+            事件的委派
+                - 将事件绑定给元素的共同祖先元素，从而通过祖先元素的相应函数来处理事件
+                - 事件委派就是利用冒泡
+             */
+            u1.onclick=function(event){
+                event=event||window.event;
+
+                /* 
+                target表示的是触发事件的对象
+                 */
+                if(event.target.className=='link'){
+                    alert(event.target);
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <button id="btn01">添加超链</button>
+    <ul id="u1">
+        <li><a href="#" class="link">?</a></li>
+        <li><a href="#" class="link">??</a></li>
+        <li><a href="#" class="link">???</a></li>
+    </ul>
+</body>
+</html>

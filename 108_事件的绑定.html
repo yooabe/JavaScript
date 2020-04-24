@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            var btn01 = document.getElementById('btn01');
+            /* 
+            使用 对象.事件=函数 形式绑定响应函数
+            不能绑定多个，后边会把前面覆盖
+             */
+
+            /* 
+            addEventListener()
+                - 1.事件的字符串，不要on
+                - 2.回调函数，当事件触发时该函数会被调用
+                - 3.是否在捕获阶段触发事件，需要一个布尔值，一般为false
+
+            不支持IE8及一下的浏览器
+             */
+            /* btn01.addEventListener('click',function(){
+                alert(1);
+            },false);
+            btn01.addEventListener('click',function(){
+                alert(2);
+            },false); */
+
+            /* 
+            attachEvent()
+                - 1.事件的字符串，要on
+                - 2.回调函数，当事件触发时该函数会被调用
+
+            支持IE8，后绑定先执行
+            this为window
+             */
+            /* btn01.attachEvent('onclick',function(){
+                alert('1');
+            });
+            btn01.attachEvent('onclick',function(){
+                alert('2');
+            }); */
+
+
+            function bind(obj, eventStr, callback) {
+                if (obj.addEventListener) {
+                    obj.addEventListener(eventStr, callback, false);
+                } else {
+                    obj.attachEvent('on' + eventStr, function(){
+                        //匿名函数中调用回调函数，call修改this
+                        callback.call(obj);
+                    });
+                }
+            }
+
+            bind(btn01, 'click', function () {
+                alert(this);
+            });
+
+        };
+
+    </script>
+</head>
+
+<body>
+    <button id="btn01">??</button>
+</body>
+
+</html>
