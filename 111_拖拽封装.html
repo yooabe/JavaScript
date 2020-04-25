@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: tan;
+            position: absolute;
+        }
+
+        #box2 {
+            width: 100px;
+            height: 100px;
+            background-color: teal;
+            position: absolute;
+            left: 200px;
+            top: 200px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var box1 = document.getElementById('box1');
+            var box2 = document.getElementById('box2');  
+            
+            //开启
+            drag(box1);
+            drag(box2);
+        }
+        function drag(obj) {
+            obj.onmousedown = function (event) {
+                if (obj.setCapture) {
+                    obj.setCapture();
+                }
+                event = event || window.event;
+
+                //div偏移量 鼠标.clentX-元素.offsetLeft...
+                var ol = event.clientX - obj.offsetLeft;
+                var ot = event.clientY - obj.offsetTop;
+
+                // onmousemove 移动
+                document.onmousemove = function (event) {
+                    event = event || window.event;
+                    //获取鼠标坐标
+                    var left = event.clientX - ol;
+                    var top = event.clientY - ot;
+
+                    //修改box1位置
+                    obj.style.left = left + 'px';
+                    obj.style.top = top + 'px';
+                }
+                //onmouseup 松开
+                document.onmouseup = function () {
+                    //取消onmousemove
+                    document.onmousemove = null;
+                    //取消onmouseup
+                    document.onmouseup = null;
+                    obj.releaseCapture && obj.releaseCapture
+                };
+                return false
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+</body>
+
+</html>

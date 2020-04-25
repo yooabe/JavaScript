@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: tan;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var box1 = document.getElementById('box1');
+            /* 
+            onmousewheel
+            火狐 DOMMouseScroll（需要通过addEventListener()来绑定
+             */
+            box1.onmousewheel = function (event) {
+                event=event||window.event;
+                //event.wheelDelta 滚轮方向
+                //火狐 detail
+
+                if(event.wheelDelta>0||event.detail<0){
+                    box1.style.height=box1.clientHeight-10+'PX'
+                }else{
+                    box1.style.height=box1.clientHeight+10+'PX'
+                }
+
+                /* 
+                滚动条也会跟着滚动（默认行为
+                而addEventListener()取消默认行为不能用return false
+                需要用event.preventDefault();来取消默认，而ie8不支持
+                 */
+                 event.preventDefault() && event.preventDefault();
+                return false;
+            }
+            bind(box1,'DOMMouseScroll',box1.onmousewheel)
+        }
+
+
+        function bind(obj, eventStr, callback) {
+            if (obj.addEventListener) {
+                obj.addEventListener(eventStr, callback, false);
+            } else {
+                obj.attachEvent('on' + eventStr, function () {
+                    //匿名函数中调用回调函数，call修改this
+                    callback.call(obj);
+                });
+            }
+        }
+    </script>
+</head>
+
+<body style="height: 1000px;">
+    <div id="box1"></div>
+</body>
+
+</html>
