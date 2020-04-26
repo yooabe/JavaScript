@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1{
+            width: 100px;
+            height: 100px;
+            background-color:tan;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            /* 
+            onkeydown
+                - 一直按着则一直触发
+                - 连续触发时，第一次和第二次之间间隔会稍微长一点（防止误操作
+            onkeyup
+
+            键盘事件一般会绑定给可以获取焦点的事件或document
+             */
+            document.onkeydown=function(event){
+                event=event||window.event;
+                /* 
+                通过keyCode来输出按键编码
+                除了keyCode还有altKey ctrlKey shiftKey
+                    这三个来判断alt ctrl shift是否被按下，按下则返回true
+                 */
+                if(event.keyCode===89&&event.ctrlKey){
+                    console.log('y+ctrl')
+                }
+            }
+            var input=document.getElementsByTagName('input')[0];
+            input.onkeydown=function(event){
+                event=event||window.event;
+                //数字48-57
+                if(event.keyCode>=48&& event.keyCode<=57){
+                //输入内容属于onkeydown默认行为
+                return false;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="box1"></div>
+    <input type="text" name="" id="">
+</body>
+</html>
