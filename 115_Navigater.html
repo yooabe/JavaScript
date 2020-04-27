@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 
+        BOM
+            - 浏览器对象模型
+            - BOM可以使我们通过JS来操作浏览器
+            - BOM对象
+                Window
+                    - 代表整个浏览器的窗口，也是网页的全局对象
+                Navigater
+                    - 代表当前浏览器信息，通过该对象来识别不同的浏览器
+                Location
+                    - 代表当前浏览器的地址栏信息，可以获取信息或者操作跳转
+                History
+                    - 代表浏览器历史记录，可以通过该对象来操作浏览器的历史记录
+                    由于隐私，只能操作浏览器向前向后翻页，而且只在当次访问有效
+                Screen
+                    - 代表用户的屏幕信息，可以获取用户的显示器的相关信息
+
+                这些BOM对象在浏览器中都是作为window对象的属性保存，可以通过window对象来使用或者直接使用
+         */
+
+        //Navigiter
+
+        /* 
+            - navigator对象中的大部分浏览器已经不能帮我们识别浏览器
+            - 一般使用userAgent来判断浏览器的信息
+                userAgent是一个字符串，包含用来描述浏览器信息的内容
+                不同浏览器会有不同的userAgent
+                chrome:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36
+                IE11把微软和IR相关标识去除，无法使用userAgent来识别一个浏览器是否是IE
+         */
+        // console.log(navigator.appName);
+        console.log(navigator.userAgent);
+
+        var ua=navigator.userAgent;
+        if(/chrome/i.test(ua)){
+            console.log('chrome!');
+        }else if(/firefox/i.test(ua)){
+            console.log('firefox')
+        }else if(/msie/i.test(ua)){
+            console.log('IE');
+        }else if('ActiveXObject'in window){
+            console.log('IE11');
+        }
+
+        /* 
+        如果通过userAgent无法判断，可以通过浏览器中特有对象来判断
+        例如：ActiveXObject
+         */
+       /*  if('ActiveXObject'in window){
+            alert('yepppp');
+        }else{
+            alert('noooooo');
+        } */
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
