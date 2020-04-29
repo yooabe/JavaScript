@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            height: 300px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var img1 = document.getElementById('img1');
+            //创建数组来保存图片路径
+            var imgArr = ["file/1.jpg", "file/2.jpg", "file/3.jpg"];
+            //创建一个变量来保存当前图片的索引
+            var index = 0;
+            //创建一个变量来保存定时器的标识
+            var timer;
+
+            var btn01 = document.getElementById('btn01');
+            //每点击一次按钮就会开启一个定时器，点击关闭只能关闭最后的一个定时器
+            btn01.onclick = function () {
+                //需要按下按钮时关闭当前元素的其他定时器
+                clearInterval(timer);
+                //开启定时器
+                timer = setInterval(function () {
+                    //索引自增
+                    index++;
+                    //判断索引是否超过最大值
+                    if (index >= imgArr.length) {
+                        //则将index设置为0
+                        index = 0;
+                    }
+                    // index=index%imgArr.length;
+                    //修改img1的src属性
+                    img1.src = imgArr[index];
+                }, 1000);
+            };
+            //停止定时器
+            var btn02 = document.getElementById('btn02');
+            btn02.onclick = function () {
+                //clearInterval可以接受任何参数，如果不是一个有效的标识则什么都不做
+                clearInterval(timer);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <img src="file/1.jpg" id="img1">
+    <br>
+    <button id="btn01">???</button>
+    <button id="btn02">-——-</button>
+</body>
+
+</html>

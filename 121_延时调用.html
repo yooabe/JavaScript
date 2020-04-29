@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var num=1;
+        /* setInterval(function(){
+            console.log(num++)
+        }, 3000); */
+
+        //延时调用，隔一段时候后执行，只执行一次
+        //定时调用与延时调用的区别就是次数
+        //可以互相替换
+        var timer=setTimeout(function(){
+            console.log(num++)
+        }, 3000);
+        //使用clearTimeout()关闭一个延时调用
+        clearTimeout(timer);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

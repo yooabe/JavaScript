@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: tan;
+            position: absolute;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            //开启定时器来控制div的移动
+            //定义变量表示速度
+            var speed = 10;
+            //创建变量表示方向
+            var dir = 0;
+            setInterval(function () {
+                // 37-40 左上右下
+                switch (dir) {
+                    case 37:
+                        box1.style.left = box1.offsetLeft - speed + 'px';
+                        break;
+                    case 38:
+                        box1.style.top = box1.offsetTop - speed + 'px';
+                        break;
+                    case 39:
+                        box1.style.left = box1.offsetLeft + speed + 'px';
+                        break;
+                    case 40:
+                        box1.style.top = box1.offsetTop + speed + 'px';
+                        break;
+                }
+            }, 30);
+
+            document.onkeydown = function (event) {
+                event = event || window.event;
+                // alert(event.keyCode);
+                if (event.ctrlKey) {
+                    speed = 20;
+                }else{
+                    speed=10;
+                }
+                dir = event.keyCode;
+            };
+            document.onkeyup = function () {
+                dir = 0;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box1"></div>
+</body>
+
+</html>
