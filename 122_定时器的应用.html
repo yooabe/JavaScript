@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: tan;
+            position: absolute;
+            left: 0;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var box1 = document.getElementById('box1');
+            var btn01 = document.getElementById('btn01');
+            var timer;
+            btn01.onclick = function () {
+                //关闭上一个定时器
+                clearInterval(timer);
+                //开启定时器
+                timer=setInterval(function () {
+                    //获取原来的left值
+                    var oldValue = parseInt(getStyle(box1, 'left'));
+
+                    //旧值的基础上增加
+                    var newValue=oldValue+19;
+
+                    //判断newValue是否大于800
+                    if(newValue>800){
+                        newValue=800;
+                    }
+
+                    //赋值
+                    box1.style.left=newValue+'px';
+
+                    //移动到800px时，停止执行
+                    if(newValue >= 800){
+                        clearInterval(timer);
+                    }
+
+                }, (30));
+            }
+
+        }
+        function getStyle(obj, name) {
+            if (window.getComputedStyle) {
+                return getComputedStyle(obj, null)[name];
+            } else {
+                return obj.currentStyle[name];
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <button id="btn01">???</button>
+    <br>
+    <div id="box1"></div>
+</body>
+
+</html>
