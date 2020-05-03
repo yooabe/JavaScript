@@ -23,28 +23,70 @@
         window.onload = function () {
             var box1 = document.getElementById('box1');
             var btn01 = document.getElementById('btn01');
+            var btn02 = document.getElementById('btn02');
             var timer;
+
+            //right
             btn01.onclick = function () {
-                //关闭上一个定时器
                 clearInterval(timer);
-                //开启定时器
-                timer=setInterval(function () {
-                    //获取原来的left值
+                timer = setInterval(function () {
                     var oldValue = parseInt(getStyle(box1, 'left'));
 
-                    //旧值的基础上增加
-                    var newValue=oldValue+19;
+                    var newValue = oldValue + 19;
 
-                    //判断newValue是否大于800
-                    if(newValue>800){
-                        newValue=800;
+                    if (newValue > 800) {
+                        newValue = 800;
+                    }
+
+                    box1.style.left = newValue + 'px';
+
+                    if (newValue >= 800) {
+                        clearInterval(timer);
+                    }
+
+                }, (30));
+            }
+
+            //left
+            btn02.onclick = function () {
+                move(box1, 0, 10)
+            }
+
+            //尝试创建一个可以执行简单动画的函数
+            /* 
+            参数：
+                obj：要执行动画的对象
+                target：执行动画的目标位置
+                speed：移动的速度
+             */
+            function move(obj, target, speed) {
+                //关闭上一个定时器
+                clearInterval(timer);
+
+                //判断速度的正负值
+                var current = parseInt(getStyle(obj, 'left'));
+                if (current > target) {
+                    speed = -speed;
+                }
+
+                //开启定时器
+                timer = setInterval(function () {
+                    //获取原来的left值
+                    var oldValue = parseInt(getStyle(obj, 'left'));
+
+                    //旧值的基础上增加
+                    var newValue = oldValue + speed;
+
+                    //判断newValue
+                    if ((speed < 0 && newValue < target) || (speed > 0 && newValue > target)) {
+                        newValue = target;
                     }
 
                     //赋值
-                    box1.style.left=newValue+'px';
+                    obj.style.left = newValue + 'px';
 
-                    //移动到800px时，停止执行
-                    if(newValue >= 800){
+                    //停止执行
+                    if (newValue == target) {
                         clearInterval(timer);
                     }
 
@@ -64,6 +106,7 @@
 
 <body>
     <button id="btn01">???</button>
+    <button id="btn02">-----</button>
     <br>
     <div id="box1"></div>
 </body>
