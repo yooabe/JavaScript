@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 500px;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #outer{
+            width: 520px;
+            height: 280px;
+            margin: 50px auto;
+            background-color: steelblue;
+            padding: 10px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        #imgList{
+            list-style: none;
+            position: absolute;
+        }
+        #imgList li{
+            float: left;
+            margin: 0 10px;
+        }
+        #navDiv{
+            position: absolute;
+            bottom: 15px;
+        }
+        #navDiv a{
+            float: left;
+            width: 10px;
+            height: 10px;
+            background-color: gray;
+            margin: 0 5px;
+            opacity: .4;
+            /* 兼容IE8透明 */
+            filter: alpha(opacity=.4);
+        }
+        #navDiv a:hover{
+            background-color: #fff;
+        }
+    </style>
+    <script src="124_定时器引用.js"></script>
+    <script>
+        window.onload=function(){
+            //设置imgList的宽度
+            var imgList=document.getElementById('imgList');
+            var imgArr=document.getElementsByTagName('img');
+            imgList.style.width=520*imgArr.length+'px';
+
+            //设置navDiv居中
+            var navDiv=document.getElementById('navDiv');
+            var outer=document.getElementById('outer');
+            navDiv.style.left=(outer.offsetWidth-navDiv.offsetWidth)/2+'px';
+
+            //默认选中状态
+            var index=0;
+            var allA=document.getElementsByTagName('a');
+            allA[index].style.backgroundColor="white";
+            
+            //点击超链切换到指定的图片
+            for(var i=0;i<allA.length;i++){
+                //为每一个超链接都添加一个num属性
+                allA[i].num=i;
+
+                allA[i].onclick=function(){
+                    index=this.num;
+
+                    /* 第一张 0 0
+                    第二张 1 -520
+                    imgList.style.left=-520*index+'px'; */
+                    setA();
+
+                    move(imgList,'left',-520*index,25,function(){
+
+                    })
+                }
+            }
+            //方法：设置选中的a
+            function setA(){
+                //遍历所有a并设置背景颜色
+                for(var i=0;i<allA.length;i++){
+                    //空串去掉内联样式，即默认样式
+                    allA[i].style.backgroundColor="";
+                }
+                allA[index].style.backgroundColor="white";
+            }
+        }
+    </script>
+</head>
+<body>
+    <!-- 创建一个外部div -->
+    <div id="outer">
+        <!-- ul放置图片 -->
+        <ul id="imgList">
+            <li>
+                <img src="file/1.jpg" alt="">
+            </li>
+            <li>
+                <img src="file/2.jpg" alt="">
+            </li>
+            <li>
+                <img src="file/3.jpg" alt="">
+            </li>
+        </ul>
+        <!-- 导航按钮 -->
+        <div id="navDiv">
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+        </div>
+    </div>
+</body>
+</html>

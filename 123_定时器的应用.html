@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: tan;
+            position: absolute;
+            left: 0;
+        }
+
+        #box2 {
+            width: 100px;
+            height: 100px;
+            background-color: teal;
+            position: absolute;
+            left: 0;
+            top: 200px;
+        }
+    </style>
+    <script src="124_定时器引用.js"></script>
+    <script>
+        window.onload = function () {
+            var box1 = document.getElementById('box1');
+            var btn01 = document.getElementById('btn01');
+            var btn02 = document.getElementById('btn02');
+            var btn03 = document.getElementById('btn03');
+            var btn04 = document.getElementById('btn04');
+            var timer;
+            //timer在全局变量，所有正在执行的定时器都在这个变量中保存
+
+            //right
+            btn01.onclick = function () {
+                move(box1, 'left', 800, 20)
+            }
+
+            //left
+            btn02.onclick = function () {
+                move(box1, 'left', 0, 10)
+            }
+
+            btn03.onclick = function () {
+                move(box2, 'left', 800, 10)
+            }
+
+            btn04.onclick = function () {
+                move(box2, 'width', 800, 10, function () {
+                    move(box2, 'height', 800, 10, function () {
+                        alert(1);
+                    })
+                })
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+    <button id="btn01">???</button>
+    <button id="btn02">-----</button>
+    <button id="btn03">???</button>
+    <button id="btn04">-----</button>
+    <br>
+    <div id="box1"></div>
+    <div id="box2"></div>
+</body>
+
+</html>
