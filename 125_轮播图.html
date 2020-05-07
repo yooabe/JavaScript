@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        img{
+        img {
             width: 500px;
         }
-        *{
+
+        * {
             margin: 0;
             padding: 0;
         }
-        #outer{
+
+        #outer {
             width: 520px;
             height: 280px;
             margin: 50px auto;
@@ -21,19 +24,23 @@
             position: relative;
             overflow: hidden;
         }
-        #imgList{
+
+        #imgList {
             list-style: none;
             position: absolute;
         }
-        #imgList li{
+
+        #imgList li {
             float: left;
             margin: 0 10px;
         }
-        #navDiv{
+
+        #navDiv {
             position: absolute;
             bottom: 15px;
         }
-        #navDiv a{
+
+        #navDiv a {
             float: left;
             width: 10px;
             height: 10px;
@@ -43,58 +50,91 @@
             /* 兼容IE8透明 */
             filter: alpha(opacity=.4);
         }
-        #navDiv a:hover{
+
+        #navDiv a:hover {
             background-color: #fff;
         }
     </style>
     <script src="124_定时器引用.js"></script>
     <script>
-        window.onload=function(){
+        window.onload = function () {
             //设置imgList的宽度
-            var imgList=document.getElementById('imgList');
-            var imgArr=document.getElementsByTagName('img');
-            imgList.style.width=520*imgArr.length+'px';
+            var imgList = document.getElementById('imgList');
+            var imgArr = document.getElementsByTagName('img');
+            imgList.style.width = 520 * imgArr.length + 'px';
 
             //设置navDiv居中
-            var navDiv=document.getElementById('navDiv');
-            var outer=document.getElementById('outer');
-            navDiv.style.left=(outer.offsetWidth-navDiv.offsetWidth)/2+'px';
+            var navDiv = document.getElementById('navDiv');
+            var outer = document.getElementById('outer');
+            navDiv.style.left = (outer.offsetWidth - navDiv.offsetWidth) / 2 + 'px';
 
             //默认选中状态
-            var index=0;
-            var allA=document.getElementsByTagName('a');
-            allA[index].style.backgroundColor="white";
-            
-            //点击超链切换到指定的图片
-            for(var i=0;i<allA.length;i++){
-                //为每一个超链接都添加一个num属性
-                allA[i].num=i;
+            var index = 0;
+            var allA = document.getElementsByTagName('a');
+            allA[index].style.backgroundColor = "white";
 
-                allA[i].onclick=function(){
-                    index=this.num;
+            //点击超链切换到指定的图片
+            for (var i = 0; i < allA.length; i++) {
+                //为每一个超链接都添加一个num属性
+                allA[i].num = i;
+
+                allA[i].onclick = function () {
+                    //关闭自动切换定时器
+                    clearInterval(timer);
+
+                    index = this.num;
 
                     /* 第一张 0 0
                     第二张 1 -520
                     imgList.style.left=-520*index+'px'; */
                     setA();
 
-                    move(imgList,'left',-520*index,25,function(){
-
+                    move(imgList, 'left', -520 * index, 25, function () {
+                        //动画执行完毕自动开启切换图片
+                        autoChange();
                     })
                 }
             }
+            //自动切换图片
+            autoChange();
+
+
             //方法：设置选中的a
-            function setA(){
-                //遍历所有a并设置背景颜色
-                for(var i=0;i<allA.length;i++){
-                    //空串去掉内联样式，即默认样式
-                    allA[i].style.backgroundColor="";
+            function setA() {
+                //判断当前索引是否是最后一张
+                if (index >= imgArr.length - 1) {
+                    index = 0;
+                    //此时显示最后一张与第一张一模一样的图片
+                    //通过css将最后一张切换成第一张
+                    imgList.style.left = 0;
                 }
-                allA[index].style.backgroundColor="white";
+
+                //遍历所有a并设置背景颜色
+                for (var i = 0; i < allA.length; i++) {
+                    //空串去掉内联样式，即默认样式
+                    allA[i].style.backgroundColor = "";
+                }
+                allA[index].style.backgroundColor = "white";
+            };
+
+            var timer;
+            //函数：自动切换图片
+            function autoChange() {
+                timer = setInterval(function () {
+                    //索引自增
+                    index++;
+                    index %= imgArr.length;
+                    //执行
+                    move(imgList, 'left', -520 * index, 20, function () {
+                        //修改导航点
+                        setA()
+                    })
+                }, (3000));
             }
         }
     </script>
 </head>
+
 <body>
     <!-- 创建一个外部div -->
     <div id="outer">
@@ -109,6 +149,9 @@
             <li>
                 <img src="file/3.jpg" alt="">
             </li>
+            <li>
+                <img src="file/1.jpg" alt="">
+            </li>
         </ul>
         <!-- 导航按钮 -->
         <div id="navDiv">
@@ -118,4 +161,5 @@
         </div>
     </div>
 </body>
+
 </html>
